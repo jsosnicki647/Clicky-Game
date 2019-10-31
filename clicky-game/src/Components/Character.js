@@ -1,12 +1,9 @@
 import React from "react";
 
-const styles = {
-    
-}
 
 function Character (props) {
     return(
-            <img className="img-responsive pic m-2" width="200" height="200" alt={props.name} src={props.image} />
+        <img className="img-responsive m-3" width="150" height="150" alt={props.name} src={props.image} />
     );
 }
 
