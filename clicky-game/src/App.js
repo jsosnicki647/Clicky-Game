@@ -35,24 +35,24 @@ class App extends React.Component {
             <div className="col-12">
               <Character onClick={this.randomize} image={Chars[0].image} />
               <Character onClick={this.randomize} image={Chars[1].image} />
+              <Character onClick={this.randomize} image={Chars[2].image} />
               <Character onClick={this.randomize} image={Chars[3].image} />
-              <Character onClick={this.randomize} image={Chars[4].image} />
             </div>
           </div>
           <div className="row">
             <div className="col-12">
+              <Character onClick={this.randomize} image={Chars[4].image} />
               <Character onClick={this.randomize} image={Chars[5].image} />
               <Character onClick={this.randomize} image={Chars[6].image} />
               <Character onClick={this.randomize} image={Chars[7].image} />
-              <Character onClick={this.randomize} image={Chars[8].image} />
             </div>
           </div>
           <div className="row">
             <div className="col-12">
+              <Character onClick={this.randomize} image={Chars[8].image} />
               <Character onClick={this.randomize} image={Chars[9].image} />
               <Character onClick={this.randomize} image={Chars[10].image} />
               <Character onClick={this.randomize} image={Chars[11].image} />
-              <Character onClick={this.randomize} image={Chars[12].image} />
             </div>
           </div>
         </div>
