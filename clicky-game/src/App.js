@@ -1,6 +1,6 @@
 import React from 'react'
 import Character from "./Components/Character"
-import Chars from "./Chars.json"
+import characters from "./characters.json"
 import Nav from "./Components/Nav"
 
 
@@ -8,23 +8,37 @@ import Nav from "./Components/Nav"
 class App extends React.Component {
 
   state = {
-    Chars
+    characters: characters,
+    selected: [],
+    topScore: 0
   }
 
-  randomIndex = () => {
-    const results = []
-    while(results.length<12){
-      const num = Math.floor(Math.random()*12)
-      if(results.indexOf(num) === -1) results.push(num)
-    }
-    return results
+  selected = (e) => {
+    const id = e.target
+    const newSelected = this.state.selected
+    newSelected.push(id)
+    this.setState({selected: newSelected})
+    console.log(id)
+    this.randomize()
+    // this.setState({characters: this.randomize()})
   }
+
 
   randomize = () => {
-    const newChars = this.state.Chars.map(char => (this.randomIndex(char.id)))
-    console.log(newChars)
-    this.setState({newChars})
+    this.setState({characters: this.shuffleArray(this.state.characters)})
   }
+
+  shuffleArray = (arr) => {
+    var j, x, i;
+    for (i = arr.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i +1));
+      x = arr[i];
+      arr[i] = arr[j];
+      arr[j] = x;
+    }
+    return arr;
+  }
+
 
   render(){
     return (
@@ -33,26 +47,26 @@ class App extends React.Component {
         <div className="container text-center">
           <div className="row">
             <div className="col-12">
-              <Character onClick={this.randomize} image={Chars[0].image} />
-              <Character onClick={this.randomize} image={Chars[1].image} />
-              <Character onClick={this.randomize} image={Chars[2].image} />
-              <Character onClick={this.randomize} image={Chars[3].image} />
+              <Character selected={this.selected} id={characters[0].id} image={characters[0].image} />
+              <Character selected={this.selected} id={characters[1].id} image={characters[1].image} />
+              <Character selected={this.selected} id={characters[2].id} image={characters[2].image} />
+              <Character selected={this.selected} id={characters[3].id} image={characters[3].image} />
             </div>
           </div>
           <div className="row">
             <div className="col-12">
-              <Character onClick={this.randomize} image={Chars[4].image} />
-              <Character onClick={this.randomize} image={Chars[5].image} />
-              <Character onClick={this.randomize} image={Chars[6].image} />
-              <Character onClick={this.randomize} image={Chars[7].image} />
+              <Character selected={this.selected} id={characters[4].id} image={characters[4].image} />
+              <Character selected={this.selected} id={characters[5].id} image={characters[5].image} />
+              <Character selected={this.selected} id={characters[6].id} image={characters[6].image} />
+              <Character selected={this.selected} id={characters[7].id} image={characters[7].image} />
             </div>
           </div>
           <div className="row">
             <div className="col-12">
-              <Character onClick={this.randomize} image={Chars[8].image} />
-              <Character onClick={this.randomize} image={Chars[9].image} />
-              <Character onClick={this.randomize} image={Chars[10].image} />
-              <Character onClick={this.randomize} image={Chars[11].image} />
+              <Character selected={this.selected} id={characters[8].id} image={characters[8].image} />
+              <Character selected={this.selected} id={characters[9].id} image={characters[9].image} />
+              <Character selected={this.selected} id={characters[10].id} image={characters[10].image} />
+              <Character selected={this.selected} id={characters[11].id} image={characters[11].image} />
             </div>
           </div>
         </div>
