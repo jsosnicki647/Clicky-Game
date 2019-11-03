@@ -7,12 +7,12 @@ const style = {
     }
 }
 
-function Nav () {
+function Nav (props) {
     return(
         <nav className="navbar navbar-light bg-light mb-5">
             <span style={style.navStyle}>Clicky Game</span>
-            <span style={style.navStyle}>holder</span>
-            <span style={style.navStyle}>Score: | Top Score:</span>
+            <span style={style.navStyle}>{props.message}</span>
+            <span style={style.navStyle}>Score: {props.score} | Top Score: {props.topScore}</span>
         </nav>
     );
 }

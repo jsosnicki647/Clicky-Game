@@ -10,17 +10,29 @@ class App extends React.Component {
   state = {
     characters: characters,
     selected: [],
-    topScore: 0
+    topScore: 0,
+    score: 0,
+    message: ""
   }
 
   selected = (e) => {
-    const id = e.target
+    const id = parseInt(e.target.id)
     const newSelected = this.state.selected
-    newSelected.push(id)
-    this.setState({selected: newSelected})
-    console.log(id)
-    this.randomize()
-    // this.setState({characters: this.randomize()})
+    if (this.state.selected.indexOf(id) === -1){
+      newSelected.push(id)
+      this.setState({selected: newSelected})
+      this.setState({score: this.state.score + 1})
+      this.setState({message: "NICE"})
+      this.randomize()
+    }
+    else{
+      this.setState({message: "You already picked this character :("})
+      if(this.state.score > this.state.topScore){
+        this.setState({topScore: this.state.score})
+      }
+      this.setState({score: 0})
+      this.setState({selected: []})
+    }
   }
 
 
@@ -43,7 +55,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Nav />
+        <Nav score={this.state.score} topScore={this.state.topScore} message={this.state.message}/>
         <div className="container text-center">
           <div className="row">
             <div className="col-12">
