@@ -58,28 +58,11 @@ class App extends React.Component {
         <Nav score={this.state.score} topScore={this.state.topScore} message={this.state.message}/>
         <div className="container text-center">
           <div className="row">
-            <div className="col-12">
-              <Character selected={this.selected} id={characters[0].id} image={characters[0].image} />
-              <Character selected={this.selected} id={characters[1].id} image={characters[1].image} />
-              <Character selected={this.selected} id={characters[2].id} image={characters[2].image} />
-              <Character selected={this.selected} id={characters[3].id} image={characters[3].image} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
-              <Character selected={this.selected} id={characters[4].id} image={characters[4].image} />
-              <Character selected={this.selected} id={characters[5].id} image={characters[5].image} />
-              <Character selected={this.selected} id={characters[6].id} image={characters[6].image} />
-              <Character selected={this.selected} id={characters[7].id} image={characters[7].image} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
-              <Character selected={this.selected} id={characters[8].id} image={characters[8].image} />
-              <Character selected={this.selected} id={characters[9].id} image={characters[9].image} />
-              <Character selected={this.selected} id={characters[10].id} image={characters[10].image} />
-              <Character selected={this.selected} id={characters[11].id} image={characters[11].image} />
-            </div>
+            {characters.map(character => (
+              <div className="col-lg-3 col-sm-12">
+                <Character selected={this.selected} id={character.id} image={character.image} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
